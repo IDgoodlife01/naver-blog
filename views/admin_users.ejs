@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>회원 관리</title>
+  <style>
+    table { width: 100%; border-collapse: collapse; }
+    th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+    th { background: #f4f4f4; }
+    button { color: white; background: red; border: none; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h2>👥 회원 관리 (관리자)</h2>
+  <table>
+    <tr><th>ID</th><th>이름</th><th>비밀번호(해시)</th><th>관리</th></tr>
+    <% users.forEach(u => { %>
+    <tr>
+      <td><%= u.id %></td>
+      <td><%= u.username %></td>
+      <td><%= u.password.substring(0, 15) %>...</td>
+      <td>
+        <form action="/admin/user/delete/<%= u.id %>" method="post">
+          <button type="submit">삭제</button>
+        </form>
+      </td>
+    </tr>
+    <% }) %>
+  </table>
+  <br><a href="/">홈으로</a>
+</body>
+</html>
