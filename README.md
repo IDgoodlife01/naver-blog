@@ -1,61 +1,29 @@
-# 🌐 Network Blog Project
-> **Node.js + Express + MySQL을 활용한 풀스택 블로그 시스템**
+# 🌐 Network Blog
+Node.js + Express + MySQL 기반의 회원제 블로그 프로젝트입니다.
 
-본 프로젝트는 네트워크 기초 지식을 바탕으로 백엔드의 핵심 프로세스인 **인증(Authentication)**과 **데이터 처리(CRUD)**를 깊이 있게 학습하기 위해 기획된 개인 프로젝트입니다. 보안(암호화)과 권한 관리(세션/관리자 모드)의 메커니즘을 이해하고 실무적인 백엔드 구조를 익히는 데 중점을 두었습니다.
+## 🚀 핵심 기능
+- **인증/보안**: `bcrypt` 암호화 및 세션 기반 로그인 유지
+- **게시글(CRUD)**: 카드형 레이아웃 목록, 본인 글 수정/삭제 제한
+- **관리자**: 회원 명단 조회 및 DB 구조 학습용 관리자 페이지
 
----
-
-## 🚀 핵심 기능 (Key Features)
-
-### 1. 사용자 인증 및 보안 (Auth & Security)
-* **비밀번호 암호화:** `bcrypt` 라이브러리를 사용하여 사용자의 비밀번호를 **일방향 해시 암호화**하여 저장합니다.
-* **세션 관리:** `express-session`을 통한 로그인 상태 유지 및 권한별 접근 제한을 구현했습니다.
-
-### 2. 게시글 CRUD 시스템 (Post Management)
-* **카드형 UI:** EJS와 CSS를 활용하여 게시글 목록을 시각적으로 깔끔한 카드 레이아웃으로 구현했습니다.
-* **권한 제어:** 세션 데이터를 대조하여 작성자 본인만 수정/삭제가 가능하도록 로직을 설계했습니다.
-
-### 3. 관리자 전용 기능 (Admin Mode)
-* **데이터 관리:** 관리자 계정(`admin`)으로 접속 시, 전체 회원 목록 조회 및 관리 권한을 부여하여 데이터베이스 구조를 한눈에 파악할 수 있도록 구현했습니다.
-
----
-
-## 🛠 기술 스택 (Tech Stack)
-
-| 구분 | 기술 (Tech) |
-| :--- | :--- |
-| **Backend** | Node.js, Express |
-| **Database** | MySQL (mysql2/promise pool) |
-| **Frontend** | EJS Template Engine, CSS3 |
-| **Auth** | bcrypt, express-session |
+## 🛠 기술 스택
+- **Backend**: Node.js, Express, MySQL
+- **Frontend**: EJS, CSS3
+- **Auth**: bcrypt, express-session
 
 
 
----
+## 📂 프로젝트 구조
+- `app.js`: 메인 서버 설정 및 라우팅
+- `db.js`: MySQL DB 연결 (Pool)
+- `routes/`: auth(인증/관리자), post(게시글) 로직 분리
+- `views/`: EJS 화면 템플릿
 
-## 📂 프로젝트 구조 (Project Structure)
+## 📝 문제 해결 (Key Point)
+- `mysql2` 구조 분해 할당을 활용한 데이터 출력 오류 해결
+- 관리자 라우터 순서 조정을 통한 `Cannot GET` 에러 디버깅
 
-* **`app.js`**: 서버 설정 및 미들웨어, 라우터 통합 관리
-* **`db.js`**: MySQL 커넥션 풀 설정
-* **`routes/auth.js`**: 회원가입, 로그인, 관리자 기능 로직 분리
-* **`routes/post.js`**: 게시글 CRUD 로직 분리
-* **`views/`**: 각 페이지별 EJS 템플릿 (home, list, write, edit 등)
-* **`public/style.css`**: 프로젝트 공통 디자인 테마
-
----
-
-## 📝 문제 해결 및 성장 (Problem Solving)
-
-1. **데이터 렌더링 최적화:** `mysql2` 쿼리 결과의 구조 분해 할당을 통해 데이터 배열을 정확히 추출하여, 화면에 숫자가 출력되던 에러를 해결했습니다.
-2. **라우팅 설계:** 라우터 분리 및 미들웨어 설정을 통해 코드의 가독성을 높이고, 관리자 페이지 접근 시 발생하던 `Cannot GET` 에러를 디버깅했습니다.
-3. **UI 개선:** 단순 텍스트 리스트를 반응형 카드형 레이아웃으로 개선하여 웹 디자인 역량을 강화했습니다.
-
----
-
-## ⚙️ 시작하기 (Quick Start)
-
-1. **저장소 클론 및 패키지 설치**
-```bash
-git clone [https://github.com/IDgoodlife01/naver-blog.git](https://github.com/IDgoodlife01/naver-blog.git)
-cd naver-blog
-npm install
+## ⚙️ 실행 방법
+1. `npm install`
+2. `db.js` 정보 수정
+3. `node app.js` 실행 (8080 포트)
