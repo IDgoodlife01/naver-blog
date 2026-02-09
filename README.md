@@ -1,4 +1,4 @@
-# 🌐 Network Blog
+# 🌐 Network Blog(AI chat gpt사용)
 Node.js + Express + MySQL 기반의 회원제 블로그 프로젝트입니다.
 
 ## 🚀 핵심 기능
